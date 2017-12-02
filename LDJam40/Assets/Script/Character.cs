@@ -6,10 +6,17 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Character : MonoBehaviour {
 
+	public static class MoveDirection {
+		const int left = -1;
+		const int right = 1;
+		const int none = 0;
+	}
+
 	public float maxSpeed = 3.5f;
 	public float moveSpeed = 2.5f;
 	public float dampAmount = 0.15f;
 	public float jumpForce = 350f;
+	int direction = MoveDirection.none;
 
 	private Rigidbody2D rb;
 	public bool isGrounded = true;
@@ -24,6 +31,10 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CheckIfGrounded();
+	}
+
+	public void ChangeDirection(int direction) {
+		this.direction = direction;
 	}
 
 	public void Move(int direction) {
