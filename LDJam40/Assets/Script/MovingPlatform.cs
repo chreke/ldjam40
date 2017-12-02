@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour {
 
-	public float moveSteps;
+	public GameObject target;
 	Vector3 startPosition;
 	Vector3 endPosition;
 	Vector3 targetPosition;
-	const float moveSpeed = .1f;
-
-
-
+	const float moveSpeed = .33f;
 
 	// Use this for initialization
 	void Start () {
 		startPosition = transform.position;
-		endPosition = transform.position + new Vector3(moveSteps, 0f, 0f);
+		endPosition = target.transform.position;
 		targetPosition = endPosition;
 	}
-	
+
+
+	void OnCollisionEnter2D(Collision2D collision) {
+		Character character = collision.collider.GetComponent<Character>();
+		character.transform.SetParent(transform);
+	}
+
+	void OnCollisionExit2D(Collision2D collision) {
+		Character character = collision.collider.GetComponent<Character>();
+		character.transform.SetParent(null);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Vector3.Distance(transform.position, targetPosition) <= Mathf.Epsilon) {
