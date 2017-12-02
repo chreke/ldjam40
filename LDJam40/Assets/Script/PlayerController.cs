@@ -21,12 +21,16 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetButtonDown("Jump")) {
 			player.Jump();
+			GameManager.instance.RecordJump();
 		}
 
 		if(Input.GetAxisRaw("Horizontal") != 0) {
-			player.ChangeDirection((int)Mathf.Sign(Input.GetAxisRaw("Horizontal")));
+			int direction = (int)Mathf.Sign(Input.GetAxisRaw("Horizontal"));
+			player.ChangeDirection(direction);
+			GameManager.instance.RecordChangeDirection(direction);
 		} else {
-			player.ChangeDirection (0);
+			player.ChangeDirection(0);
+			GameManager.instance.RecordChangeDirection(0);
 		}
 
 	}
