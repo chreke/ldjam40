@@ -47,7 +47,8 @@ public class Character : MonoBehaviour {
 			transform.localScale = new Vector3(defaultXScale, transform.localScale.y, transform.localScale.z);
 		}
 
-        am.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        am.SetFloat("HorizontalVelocity", Mathf.Abs(rb.velocity.x));
+        am.SetFloat("VerticalVelocity", isGrounded ? 0 : Mathf.Max(-rb.velocity.y,0));
 	}
 
 	public void ChangeDirection(int direction) {
@@ -77,6 +78,7 @@ public class Character : MonoBehaviour {
 	public void Jump() {
 		if(isGrounded) {
 			rb.AddForce(Vector2.up * jumpForce);
+            am.SetTrigger("Jump");
 		}
 	}
 
