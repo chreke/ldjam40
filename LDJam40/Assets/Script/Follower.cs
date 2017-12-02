@@ -30,9 +30,6 @@ public class Follower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		follower = GetComponent<Character>();
-	}
-
-	void Awake() {
 		GameManager.instance.RegisterFollower(this);
 	}
 
