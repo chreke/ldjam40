@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 
-	private List<Follower> followers = new List<>();
+	private List<Follower> followers = new List<Follower>();
 
 	void Awake() {
 		if (instance == null) {

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Follower : MonoBehaviour {
@@ -9,26 +8,35 @@ public class Follower : MonoBehaviour {
 
 	private struct Jump {
 		public float time;
+
+		public Jump(float time) {
+			this.time = time;
+		}
 	}
 
 	private struct ChangeDirection {
 		public float time;
 		public int direction;
+
+		public ChangeDirection(float time, int direction) {
+			this.time = time;
+			this.direction = direction;
+		}
 	}
 
-	private Queue<Jump> jumps = Queue<Jump>();
-	private Queue<ChangeDirection> directionChanges = Queue<ChangeDirection>();
+	private Queue<Jump> jumps = new Queue<Jump>();
+	private Queue<ChangeDirection> directionChanges = new Queue<ChangeDirection>();
 
 	// Use this for initialization
 	void Start () {
-		follower = GetComponent<Character> ();
+		follower = GetComponent<Character>();
 	}
 
-	void pushJump(float time) {
+	public void pushJump(float time) {
 		jumps.Enqueue(new Jump(time));
 	}
 
-	void pushChangeDirection(float time, int direction) {
+	public void pushChangeDirection(float time, int direction) {
 		directionChanges.Enqueue(new ChangeDirection(time, direction));
 	}
 	

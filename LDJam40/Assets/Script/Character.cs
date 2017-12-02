@@ -7,9 +7,9 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 
 	public static class MoveDirection {
-		const int left = -1;
-		const int right = 1;
-		const int none = 0;
+		public const int left = -1;
+		public const int right = 1;
+		public const int none = 0;
 	}
 
 	public float maxSpeed = 3.5f;
