@@ -21,6 +21,7 @@ public class Character : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	public bool isGrounded = true;
+	private bool isAlive = true;
 
 	int numberOfRays = 5;
 	float defaultXScale;
@@ -77,6 +78,15 @@ public class Character : MonoBehaviour {
 		if(isGrounded) {
 			rb.AddForce(Vector2.up * jumpForce);
 		}
+	}
+
+	public void Kill() {
+		Debug.Log("Got killed!");
+		isAlive = false;
+	}
+
+	public bool IsAlive {
+		get { return this.isAlive; }
 	}
 
 	void CheckIfGrounded(){
