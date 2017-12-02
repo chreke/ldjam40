@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Character))]
 public class PlayerController : MonoBehaviour {
 
-	float speed = 3.5f;
-	float jumpForce = 350f;
-
-	private Rigidbody2D rb;
+	private Character player;
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody2D> ();	
+		player = GetComponent<Character> ();
 	}
 	
 	// Update is called once per frame
@@ -20,13 +18,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move() {
-		transform.position += Vector3.right * Input.GetAxisRaw ("Horizontal") * Time.deltaTime * speed;
-		if (Input.GetButtonDown ("Jump")) {
-			Jump ();
-		}		
-	}
 
-	void Jump() {
-		rb.AddForce (Vector2.up * jumpForce);
+		if (Input.GetButtonDown ("Jump")) {
+			player.Jump();
+		}
+
+		if (Input.GetAxisRaw ("Horizontal") != 0) {
+			player.Move ((int)Mathf.Sign(Input.GetAxisRaw ("Horizontal")));
+		}
+
 	}
 }
