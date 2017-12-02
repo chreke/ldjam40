@@ -32,6 +32,10 @@ public class Follower : MonoBehaviour {
 		follower = GetComponent<Character>();
 	}
 
+	void Awake() {
+		GameManager.instance.RegisterFollower(this);
+	}
+
 	public void pushJump(float time) {
 		jumps.Enqueue(new Jump(time));
 	}
