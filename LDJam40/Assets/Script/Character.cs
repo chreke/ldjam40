@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Animator))]
 public class Character : MonoBehaviour {
 
 	public static class MoveDirection {
@@ -25,10 +26,13 @@ public class Character : MonoBehaviour {
 	float defaultXScale;
 	BoxCollider2D bc;
 
+    Animator am;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		bc = GetComponent<BoxCollider2D>();
+        am = GetComponent<Animator>();
 		defaultXScale = transform.localScale.x;
 	}
 	
@@ -41,6 +45,8 @@ public class Character : MonoBehaviour {
 		if(direction == MoveDirection.right) {
 			transform.localScale = new Vector3(defaultXScale, transform.localScale.y, transform.localScale.z);
 		}
+
+        am.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 	}
 
 	public void ChangeDirection(int direction) {
