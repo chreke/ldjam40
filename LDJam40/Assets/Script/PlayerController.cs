@@ -23,8 +23,10 @@ public class PlayerController : MonoBehaviour {
 			player.Jump();
 		}
 
-		if (Input.GetAxisRaw("Horizontal") != 0) {
-			player.Move ((int)Mathf.Sign(Input.GetAxisRaw ("Horizontal")));
+		if(Input.GetAxisRaw("Horizontal") != 0) {
+			player.ChangeDirection((int)Mathf.Sign(Input.GetAxisRaw("Horizontal")));
+		} else {
+			player.ChangeDirection (0);
 		}
 
 	}
