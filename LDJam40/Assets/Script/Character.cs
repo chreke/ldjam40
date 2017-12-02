@@ -13,7 +13,7 @@ public class Character : MonoBehaviour {
 	}
 
 	float maxSpeed = 3f;
-	float moveSpeed = 100f;
+	float moveSpeed = 20f;
 	float dampAmount = 0.20f;
 	float jumpForce = 350f;
 	int direction = MoveDirection.none;
@@ -22,10 +22,12 @@ public class Character : MonoBehaviour {
 	public bool isGrounded = true;
 
 	int numberOfRays = 5;
+	BoxCollider2D bc;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		bc = GetComponent<BoxCollider2D>();
 	}
 	
 	// Update is called once per frame
@@ -63,12 +65,15 @@ public class Character : MonoBehaviour {
 
 	void CheckIfGrounded(){
 		isGrounded = false;
-		float raySpacing = transform.localScale.x / (numberOfRays - 1);
-		Vector3 bottomLeft = new Vector3(transform.position.x - transform.localScale.x / 2, transform.position.y - transform.localScale.y / 2);
+		Bounds bounds = bc.bounds;
+		float raySpacing = (bounds.max.x - bounds.min.x) / (numberOfRays - 1);
+		Vector3 bottomLeft = bounds.min;
 
 		for(int i = 0; i < numberOfRays; i++){
 			Vector3 startCastFrom = new Vector3(bottomLeft.x + raySpacing * i, bottomLeft.y);
 			Vector3 endCastAt = new Vector3(bottomLeft.x + raySpacing * i, bottomLeft.y - 0.05f);
+
+			Debug.DrawLine(startCastFrom, endCastAt, Color.red);
 
 			if(Physics2D.Linecast(startCastFrom, endCastAt, 1 << LayerMask.NameToLayer("Ground"))){
 				isGrounded = true;

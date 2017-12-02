@@ -1830,21 +1830,21 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 2
+    m_DirtyIndex: 0
 --- !u!19719996 &1069328567
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -2083,20 +2083,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 50900776788584178, guid: 39500bcd9d11d4854835b21b986b28e4,
+    - target: {fileID: 61116994850849736, guid: 39500bcd9d11d4854835b21b986b28e4,
         type: 2}
-      propertyPath: m_LinearDrag
-      value: 0
+      propertyPath: m_Size.x
+      value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 4836769876884680, guid: 39500bcd9d11d4854835b21b986b28e4, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 50900776788584178, guid: 39500bcd9d11d4854835b21b986b28e4,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 28d3e6b0744a347a1b4d3acef4fb5346, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39500bcd9d11d4854835b21b986b28e4, type: 2}
   m_IsPrefabParent: 0
