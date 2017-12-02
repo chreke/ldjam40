@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
+	public Text timer;
 	private const float followerDelay = 0.20f;
+	float timeLimit = 60.0f;
+
 
 	private List<Follower> followers = new List<Follower>();
 
@@ -16,6 +20,15 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Assert.IsNull(instance);
 		}
+	}
+
+	void Start() {
+		timer.text = timeLimit.ToString("F2");
+	}
+
+	void Update() {
+		timeLimit -= Time.deltaTime;
+		timer.text = timeLimit.ToString("F2");
 	}
 
 	public void RecordChangeDirection(int direction) {

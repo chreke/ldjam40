@@ -67,6 +67,12 @@ public class Character : MonoBehaviour {
 
 	public void Move(int direction) {
 		if(direction != MoveDirection.none) {
+			float defaultMaxSpeed = maxSpeed;
+
+			if(!GetComponent<PlayerController>()) {
+				maxSpeed += Random.Range(-0.25f, 0.25f);
+			}
+
 			if(direction * rb.velocity.x < maxSpeed) {
 				rb.AddForce(Vector2.right * direction * moveSpeed);
 			}
@@ -74,6 +80,8 @@ public class Character : MonoBehaviour {
 			if(Mathf.Abs(rb.velocity.x) > maxSpeed) {
 				rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
 			}
+
+			maxSpeed = defaultMaxSpeed;
 		} else {
 			if(isGrounded) {
 				rb.velocity = new Vector2(rb.velocity.x * (1 - dampAmount), rb.velocity.y);
@@ -83,7 +91,12 @@ public class Character : MonoBehaviour {
 
 	public void Jump() {
 		if(isGrounded) {
+			float defaultJumpForce = jumpForce;
+			if(!GetComponent<PlayerController>()) {
+				jumpForce += Random.Range(-20f, 20f);
+			}
 			rb.AddForce(Vector2.up * jumpForce);
+			jumpForce = defaultJumpForce;
             am.SetTrigger("Jump");
 		}
 	}
