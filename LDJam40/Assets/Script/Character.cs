@@ -36,7 +36,7 @@ public class Character : MonoBehaviour {
         am = GetComponent<Animator>();
 		defaultXScale = transform.localScale.x;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		CheckIfGrounded();

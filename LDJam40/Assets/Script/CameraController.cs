@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
 	GameObject player;
+	float smoothSpeed = 0.125f;
 
 	// Use this for initialization
 	void Start () {
@@ -12,7 +13,8 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+	void FixedUpdate () {
+		Vector3 targetPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+		transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
 	}
 }
