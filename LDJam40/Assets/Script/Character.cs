@@ -22,22 +22,24 @@ public class Character : MonoBehaviour {
 	public bool isGrounded = true;
 
 	int numberOfRays = 5;
+	float defaultXScale;
 	BoxCollider2D bc;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		bc = GetComponent<BoxCollider2D>();
+		defaultXScale = transform.localScale.x;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		CheckIfGrounded();
 		if(direction == MoveDirection.left) {
-			transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+			transform.localScale = new Vector3(defaultXScale * -1, transform.localScale.y, transform.localScale.z);
 		}
 		if(direction == MoveDirection.right) {
-			transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+			transform.localScale = new Vector3(defaultXScale, transform.localScale.y, transform.localScale.z);
 		}
 	}
 
