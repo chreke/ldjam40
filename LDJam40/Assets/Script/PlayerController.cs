@@ -20,10 +20,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move() {
-		float moveDirection = 0;
-		if (Input.GetAxisRaw ("Horizontal") != 0) {
-			moveDirection = Mathf.Sign (Input.GetAxis ("Horizontal"));
-		}
-		transform.position += Vector3.right * moveDirection * Time.deltaTime * speed;
+		transform.position += Vector3.right * Input.GetAxisRaw ("Horizontal") * Time.deltaTime * speed;
+		if (Input.GetButtonDown ("Jump")) {
+			Jump ();
+		}		
+	}
+
+	void Jump() {
+		rb.AddForce (Vector2.up * jumpForce);
 	}
 }
