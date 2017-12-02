@@ -35,6 +35,7 @@ public class Character : MonoBehaviour {
 
 	public void ChangeDirection(int direction) {
 		this.direction = direction;
+		GameManager.instance.RecordChangeDirection(direction);
 	}
 
 	public void Move(int direction) {
@@ -46,6 +47,7 @@ public class Character : MonoBehaviour {
 		if(isGrounded) {
 			rb.AddForce(Vector2.up * jumpForce);
 		}
+		GameManager.instance.RecordJump();
 	}
 
 	void CheckIfGrounded(){
