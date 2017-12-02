@@ -14,7 +14,7 @@ public class Character : MonoBehaviour {
 
 	float maxSpeed = 3f;
 	float moveSpeed = 100f;
-	float dampAmount = 0.15f;
+	float dampAmount = 0.20f;
 	float jumpForce = 350f;
 	int direction = MoveDirection.none;
 
@@ -48,7 +48,9 @@ public class Character : MonoBehaviour {
 				rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
 			}
 		} else {
-			rb.velocity = new Vector2(rb.velocity.x * (1 - dampAmount), rb.velocity.y);
+			if(isGrounded) {
+				rb.velocity = new Vector2(rb.velocity.x * (1 - dampAmount), rb.velocity.y);
+			}
 		}
 	}
 
