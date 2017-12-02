@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 61930708963657096}
   - component: {fileID: 212858277793682978}
   - component: {fileID: 114395442200029068}
+  - component: {fileID: 114268182422523536}
   m_Layer: 0
   m_Name: FireTrap
   m_TagString: Untagged
@@ -67,6 +68,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114268182422523536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834008058447310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cec9005f32e84c65b23be33e42ea3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114395442200029068
 MonoBehaviour:
   m_ObjectHideFlags: 1
