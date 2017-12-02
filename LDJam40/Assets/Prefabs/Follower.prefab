@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrounded: 1
+  deathPS: {fileID: 198998075210966200, guid: 0af65ff0a6e5246519ae8417f91a99b0, type: 2}
 --- !u!212 &212030766894156246
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ public class Character : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	public bool isGrounded = true;
+	public ParticleSystem deathPS;
 	private bool isAlive = true;
 
 	int numberOfRays = 5;
@@ -85,6 +86,7 @@ public class Character : MonoBehaviour {
 	public void Kill() {
 		Debug.Log("Got killed!");
 		isAlive = false;
+		bc.gameObject.SetActive(false);
 	}
 
 	public bool IsAlive {

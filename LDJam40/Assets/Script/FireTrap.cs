@@ -33,7 +33,7 @@ public class FireTrap : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!isBurning) {
-			Burn();
+			StartCoroutine(Burn());
 		}
 	}
 }

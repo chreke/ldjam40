@@ -23,7 +23,6 @@ public class Twomp : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log("wat");
 		if(isRising) {
 			Rise();
 		}
@@ -32,6 +31,12 @@ public class Twomp : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Follower") {
 			Fall();
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other) {
+		if(other.gameObject.tag == "Player" || other.gameObject.tag == "Follower") {
+			other.gameObject.GetComponent<Character>().Kill();
 		}
 	}
 
@@ -44,7 +49,6 @@ public class Twomp : MonoBehaviour {
 
 	void Rise(){
 		rb.gravityScale = 0;
-		Debug.Log("Rising!");
 		float step = riseSpeed * Time.deltaTime;
 		transform.position = Vector3.MoveTowards(transform.position, startPosition, step);
 		if(transform.position == startPosition) {
