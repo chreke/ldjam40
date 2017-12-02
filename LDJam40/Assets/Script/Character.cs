@@ -22,6 +22,7 @@ public class Character : MonoBehaviour {
 	private Rigidbody2D rb;
 	public bool isGrounded = true;
 	public ParticleSystem deathPS;
+	ParticleSystem initPS;
 	private bool isAlive = true;
 
 	int numberOfRays = 5;
@@ -50,6 +51,16 @@ public class Character : MonoBehaviour {
 
         am.SetFloat("HorizontalVelocity", Mathf.Abs(rb.velocity.x));
         am.SetFloat("VerticalVelocity", isGrounded ? 0 : Mathf.Max(-rb.velocity.y,0));
+
+		/*
+		if(initPS != null) {
+			Debug.Log("ISPS");
+			if(!initPS.IsAlive()) {
+				Debug.Log("PSDED");
+				Destroy(initPS);
+			}
+		}
+		*/
 	}
 
 	public void ChangeDirection(int direction) {
@@ -87,6 +98,8 @@ public class Character : MonoBehaviour {
 		Debug.Log("Got killed!");
 		isAlive = false;
 		bc.gameObject.SetActive(false);
+		initPS = Instantiate(deathPS, transform.position, Quaternion.identity);
+		Destroy(initPS.gameObject, initPS.main.duration);
 	}
 
 	public bool IsAlive {
