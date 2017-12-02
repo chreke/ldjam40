@@ -45,6 +45,10 @@ public class Character : MonoBehaviour {
 		this.direction = direction;
 	}
 
+	public int GetDirection() {
+		return this.direction;
+	}
+
 	public void Move(int direction) {
 		if(direction != MoveDirection.none) {
 			if(direction * rb.velocity.x < maxSpeed) {
