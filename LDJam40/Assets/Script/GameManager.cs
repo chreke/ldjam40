@@ -17,21 +17,21 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void recordChangeDirection(int direction) {
+	public void RecordChangeDirection(int direction) {
 		float currentTime = Time.time;
 		foreach (Follower f in followers) {
 			f.pushChangeDirection(currentTime, direction);
 		}
 	}
 
-	void recordJump() {
+	public void RecordJump() {
 		float currentTime = Time.time;
 		foreach (Follower f in followers) {
 			f.pushJump(currentTime);
 		}
 	}
 
-	void registerFollower(Follower follower) {
+	public void RegisterFollower(Follower follower) {
 		followers.Add(follower);
 	}
 }
