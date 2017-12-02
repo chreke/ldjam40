@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Follower : MonoBehaviour {
+public class Follower : MonoBehaviour, CharacterListener {
 
-	public float timeOffset;
+	public float timeOffset = 0f;
 	private Character follower;
 
 	private struct Jump {
@@ -30,7 +30,12 @@ public class Follower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		follower = GetComponent<Character>();
+		follower.AddListener(this);
 		GameManager.instance.RegisterFollower(this);
+	}
+
+	public void setTimeOffset(float offset) {
+		this.timeOffset = offset;
 	}
 
 	public void pushJump(float time) {
@@ -39,6 +44,10 @@ public class Follower : MonoBehaviour {
 
 	public void pushChangeDirection(float time, int direction) {
 		directionChanges.Enqueue(new ChangeDirection(time, direction));
+	}
+
+	public void onKill(Character character) {
+		GameManager.instance.UnregisterFollower(this);
 	}
 	
 	// Update is called once per frame

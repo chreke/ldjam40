@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface CharacterListener {
+	void onKill(Character character);
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Animator))]
@@ -29,6 +33,7 @@ public class Character : MonoBehaviour {
 	BoxCollider2D bc;
 
     Animator am;
+	List<CharacterListener> listeners = new List<CharacterListener>();
 
 	// Use this for initialization
 	void Start () {
@@ -89,10 +94,17 @@ public class Character : MonoBehaviour {
 		bc.gameObject.SetActive(false);
 		ParticleSystem initPS = Instantiate(deathPS, transform.position, Quaternion.identity);
 		Destroy(initPS.gameObject, initPS.main.duration);
+		foreach (CharacterListener l in listeners) {
+			l.onKill(this);
+		}
 	}
 
 	public bool IsAlive {
 		get { return this.isAlive; }
+	}
+
+	public void AddListener(CharacterListener listener) {
+		listeners.Add(listener);
 	}
 
 	void CheckIfGrounded(){
