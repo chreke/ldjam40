@@ -33,6 +33,12 @@ public class Character : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		CheckIfGrounded();
+		if(direction == MoveDirection.left) {
+			transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+		}
+		if(direction == MoveDirection.right) {
+			transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+		}
 	}
 
 	public void ChangeDirection(int direction) {
