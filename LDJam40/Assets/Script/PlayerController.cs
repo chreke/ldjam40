@@ -24,14 +24,13 @@ public class PlayerController : MonoBehaviour {
 			GameManager.instance.RecordJump();
 		}
 
-		if(Input.GetAxisRaw("Horizontal") != 0) {
-			int direction = (int)Mathf.Sign(Input.GetAxisRaw("Horizontal"));
-			player.ChangeDirection(direction);
-			GameManager.instance.RecordChangeDirection(direction);
-		} else {
-			player.ChangeDirection(0);
-			GameManager.instance.RecordChangeDirection(0);
+		int direction = 0;
+		if (Input.GetAxisRaw("Horizontal") != 0) {
+			direction = (int)Mathf.Sign(Input.GetAxisRaw("Horizontal"));
 		}
-
+		if (player.GetDirection() != direction) {
+			GameManager.instance.RecordChangeDirection(direction);
+			player.ChangeDirection(direction);
+		}
 	}
 }
