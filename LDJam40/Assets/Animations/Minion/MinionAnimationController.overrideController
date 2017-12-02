@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MinionAnimationController
+  m_Controller: {fileID: 9100000, guid: 0a33cbec1ae38d641831fc90f41aed1e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 98a33b6e817e76841ab75dd1d27fe43d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3c25582e263d3e740a4ede95aaa596cb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 25266874d1cff8346a71d730be4765d8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b98a1b2fc5a7ab64c878263b750e38d0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 807b6f4fea256384bb8fcef45e2ee048, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 95ac8c1f5d81f7c4cb2d48f47d0b4f12, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fe701a41d072cfe4b88b6d678cc4dd80, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f1d705bf9d271164d83435e8b3a11731, type: 2}
