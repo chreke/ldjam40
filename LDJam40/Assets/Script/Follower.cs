@@ -44,11 +44,12 @@ public class Follower : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float currentTime = Time.time;
-		if (jumps.Count > 0 && jumps.Peek().time >= currentTime) {
+		
+		if (jumps.Count > 0 && jumps.Peek().time + timeOffset <= currentTime) {
 			follower.Jump();
 			jumps.Dequeue();
 		}
-		if (directionChanges.Count > 0 && directionChanges.Peek().time >= currentTime) {
+		if (directionChanges.Count > 0 && directionChanges.Peek().time + timeOffset <= currentTime) {
 			int direction = directionChanges.Dequeue().direction;
 			follower.ChangeDirection(direction);
 		}
