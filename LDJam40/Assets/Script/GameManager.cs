@@ -23,11 +23,13 @@ public class GameManager : MonoBehaviour {
 
 	void Start() {
 		timer.text = timeLimit.ToString("F2");
+		ScoreManager.instance.Reset();
 	}
 
 	void Update() {
 		timeLimit -= Time.deltaTime;
 		timer.text = timeLimit.ToString("F2");
+		UpdateScore();
 	}
 
 	public void RecordChangeDirection(int direction) {
@@ -60,5 +62,9 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	void UpdateScore() {
+		ScoreManager.instance.timerScore = (int)timeLimit;
+		ScoreManager.instance.followers = followers.Count;
+	}
 
 }

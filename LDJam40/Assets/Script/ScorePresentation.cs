@@ -22,6 +22,10 @@ public class ScorePresentation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		timerScore = ScoreManager.instance.timerScore;
+		followers = ScoreManager.instance.followers;
+		treasureScore = ScoreManager.instance.treasure;
+
 		treasureText.text = "Treasure:";
 		timerText.text = "Time Bonus:";
 		followerText.text = "Survivors:";
