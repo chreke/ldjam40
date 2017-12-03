@@ -108,6 +108,9 @@ public class Character : MonoBehaviour {
 	}
 
 	public void Kill() {
+		if(!isAlive) {
+			return;
+		}
 		Debug.Log("Got killed!");
 		isAlive = false;
 

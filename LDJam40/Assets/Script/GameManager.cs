@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public Text timer;
 	private const float followerDelay = 0.15f;
-	public float timeLimit = 60.0f;
+	public float timeLimit = 10.0f;
 
 	public bool levelComplete = false;
 	public bool gameOver = false;
 	public GameObject gameOverCanvas;
+
+	public PlayerController player;
 
 	private List<Follower> followers = new List<Follower>();
 
@@ -32,9 +34,18 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
+		
 		if(!levelComplete) {
 			timeLimit -= Time.deltaTime;
 			timer.text = timeLimit.ToString("F2");
+		}
+		if(timeLimit <= 0) {
+			timeLimit = 0;
+			timer.text = timeLimit.ToString("F2");
+			player.GetComponent<Character>().Kill();
+			foreach (Follower f in followers) {
+				f.GetComponent<Character>().Kill();
+			}
 		}
 		UpdateScore();
 		if(gameOver) {
