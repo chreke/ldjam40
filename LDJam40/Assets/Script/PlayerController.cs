@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
 	void InitFollowers() {
 		for(int i = 0; i < numberOfFollowers; i++) {
-			Follower newFollower = Instantiate(followerPrefab, new Vector3(player.transform.position.x + Random.Range(-0.05f, 0.05f), player.transform.position.y + Random.Range(0f, 0.05f), player.transform.position.z), Quaternion.identity);
+			Follower newFollower = Instantiate(followerPrefab, new Vector3(player.transform.position.x + Random.Range(-0.1f, 0.1f), player.transform.position.y + Random.Range(0f, 0.05f), player.transform.position.z), Quaternion.identity);
 		}
 	}
 }
