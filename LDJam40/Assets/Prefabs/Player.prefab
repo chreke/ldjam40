@@ -118,6 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd00ba15ee6b4143855f9071ef1c6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfFollowers: 20
+  followerPrefab: {fileID: 114288670448364798, guid: 1cd7f10b700ba42e4abe24db1d96e3a2,
+    type: 2}
 --- !u!114 &114702758296703436
 MonoBehaviour:
   m_ObjectHideFlags: 1

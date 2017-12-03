@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public Text timer;
 	private const float followerDelay = 0.20f;
-	float timeLimit = 60.0f;
-
+	public float timeLimit = 60.0f;
 
 	private List<Follower> followers = new List<Follower>();
 
@@ -60,4 +59,6 @@ public class GameManager : MonoBehaviour {
 			followers[i].setTimeOffset((i + 1) * followerDelay);
 		}
 	}
+
+
 }
