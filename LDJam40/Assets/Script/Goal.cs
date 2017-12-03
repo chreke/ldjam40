@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Goal : MonoBehaviour {
 
-	bool hasWon = false;
-	public int goalScore = 2000;
-	public float timeBeforeScoreLoad = 2f;
+    bool hasWon = false;
+    public int goalScore = 2000;
+    public float timeBeforeScoreLoad = 2f;
+    
+    public ParticleSystem goldenShower;
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -26,7 +28,9 @@ public class Goal : MonoBehaviour {
 				hasWon = true;
 				GameManager.instance.levelComplete = true;
 				StartCoroutine(Win(timeBeforeScoreLoad));
-			}
+                GetComponent<Animator>().SetTrigger("reward");
+                goldenShower.Play();
+            }
 		}
 	}
 

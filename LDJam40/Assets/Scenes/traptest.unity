@@ -229,20 +229,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1462194907719948, guid: a736388440226864e941b3437b8dfed5, type: 2}
-      propertyPath: m_Name
-      value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 61849973368618598, guid: a736388440226864e941b3437b8dfed5,
+    - target: {fileID: 114329576446075460, guid: a736388440226864e941b3437b8dfed5,
         type: 2}
-      propertyPath: m_Size.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 61849973368618598, guid: a736388440226864e941b3437b8dfed5,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.32
-      objectReference: {fileID: 0}
+      propertyPath: goldenShower
+      value: 
+      objectReference: {fileID: 1914599100}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a736388440226864e941b3437b8dfed5, type: 2}
   m_IsPrefabParent: 0
@@ -32673,6 +32664,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4394026682811474, guid: 2f53f8a1529a0a84098f684889b2f4eb,
     type: 2}
   m_PrefabInternal: {fileID: 1825370408}
+--- !u!198 &1914599100 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198868246766863132, guid: a736388440226864e941b3437b8dfed5,
+    type: 2}
+  m_PrefabInternal: {fileID: 115494955}
 --- !u!1 &1952003010
 GameObject:
   m_ObjectHideFlags: 0
