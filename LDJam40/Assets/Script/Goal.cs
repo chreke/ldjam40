@@ -11,9 +11,12 @@ public class Goal : MonoBehaviour {
     public float timeBeforeScoreLoad = 2f;
     
     public ParticleSystem goldenShower;
+	AudioSource aSource;
+	public AudioClip[] coinSound;
 
 	// Use this for initialization
 	void Start () {
+		aSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -30,6 +33,9 @@ public class Goal : MonoBehaviour {
 				StartCoroutine(Win(timeBeforeScoreLoad));
                 GetComponent<Animator>().SetTrigger("reward");
                 goldenShower.Play();
+				for(int i = 0; i < 25; i++) {
+					StartCoroutine(PlayCoinSound(0.2f*i));
+				}
             }
 		}
 	}
@@ -37,5 +43,10 @@ public class Goal : MonoBehaviour {
 	IEnumerator Win(float timeout){
 		yield return new WaitForSeconds(timeout);
 		SceneManager.LoadScene(2);
+	}
+
+	IEnumerator PlayCoinSound(float delay){
+		yield return new WaitForSeconds(delay * Random.Range(0.95f, 1.05f));
+		aSource.PlayOneShot(coinSound[Random.Range(0,coinSound.Length)]);
 	}
 }
