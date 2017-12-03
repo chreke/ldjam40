@@ -14,7 +14,9 @@ public class Enemy : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		Character character = other.gameObject.GetComponent<Character>();
-		character.Kill();
+        if (character != null) {
+            character.Kill();
+        }
 	}
 
 
