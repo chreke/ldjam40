@@ -20,8 +20,10 @@ public class ScorePresentation : MonoBehaviour {
 
 	bool canPlayAgain = false;
 
-	// Use this for initialization
-	void Start () {
+    AudioSource asource;
+
+    // Use this for initialization
+    void Start () {
 		timerScore = ScoreManager.instance.timerScore;
 		followers = ScoreManager.instance.followers;
 		treasureScore = ScoreManager.instance.treasure;
@@ -30,6 +32,7 @@ public class ScorePresentation : MonoBehaviour {
 		timerText.text = "Time Bonus:";
 		followerText.text = "Survivors:";
 		scoreText.text = "Your Share:";
+        asource = GetComponent<AudioSource>();
 		StartCoroutine(ShowScore());
 	}
 	
@@ -44,13 +47,17 @@ public class ScorePresentation : MonoBehaviour {
 
 	IEnumerator ShowScore(){
 		yield return new WaitForSeconds(1f);
-		treasureText.text = "Treasure:\t" + treasureScore;
+        asource.Play();
+        treasureText.text = "Treasure:\t" + treasureScore;
 		yield return new WaitForSeconds(1f);
-		timerText.text = "Time Bonus:\tx" + GetTimeMultiplier();
+        asource.Play();
+        timerText.text = "Time Bonus:\tx" + GetTimeMultiplier();
 		yield return new WaitForSeconds(1f);
-		followerText.text = "Survivors:\t" + (followers + 1);
+        asource.Play();
+        followerText.text = "Survivors:\t" + (followers + 1);
 		yield return new WaitForSeconds(1f);
-		scoreText.text = "Your Share:\t" + CalculateScore();
+        asource.Play();
+        scoreText.text = "Your Share:\t" + CalculateScore();
 		yield return new WaitForSeconds(1f);
 		canPlayAgain = true;
 		playAgainText.text = "Press [JUMP] to play again.";

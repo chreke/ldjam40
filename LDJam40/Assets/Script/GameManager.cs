@@ -37,18 +37,28 @@ public class GameManager : MonoBehaviour {
 	void Update() {
 		
 		if(!levelComplete) {
-			timeLimit -= Time.deltaTime;
+            float oldLimit = timeLimit;
+            int current = (int)timeLimit;
+			timeLimit = Mathf.Max(timeLimit - Time.deltaTime, 0);
+            int next = (int)timeLimit;
+
+            if(current != next && next < 10 && next >= 0)
+            {
+                Camera.main.GetComponent<AudioSource>().Play();
+            }
+
 			timer.text = timeLimit.ToString("F2");
 			teamSize.text = "Teamsize: " + (followers.Count + 1);
-		}
-		if(timeLimit <= 0) {
-			timeLimit = 0;
-			timer.text = timeLimit.ToString("F2");
-			player.GetComponent<Character>().Kill();
-			foreach (Follower f in followers) {
-				f.GetComponent<Character>().Kill();
-			}
-		}
+
+            if (timeLimit <= 0 && oldLimit > 0)
+            {
+                timeLimit = 0;
+                timer.text = timeLimit.ToString("F2");
+                player.GetComponent<Character>().Kill();
+                KillAll();
+            }
+
+        }
 		UpdateScore();
 		if(gameOver) {
 			gameOverCanvas.gameObject.SetActive(true);
@@ -57,6 +67,25 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
+    private IEnumerator Kasplode(float jumpDelay, float delay, Follower f)
+    {
+        yield return new WaitForSeconds(jumpDelay);
+        f.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-100f, 100f), Random.Range(100f, 300f)));
+        yield return new WaitForSeconds(delay);
+        f.GetComponent<Character>().Kill();
+    }
+
+    private void KillAll()
+    {
+        List<Follower> tmpFollowers = new List<Follower>(followers);
+
+ 
+        foreach (Follower f in tmpFollowers)
+        {
+            StartCoroutine(Kasplode(Random.RandomRange(0.01f, 0.5f), Random.RandomRange(0.1f, 0.3f), f));
+        }
+    }
 
 	public void RecordChangeDirection(int direction) {
 		float currentTime = Time.time;
