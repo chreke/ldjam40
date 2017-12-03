@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114702758296703436}
   - component: {fileID: 95185070464020328}
   - component: {fileID: 82496449194351194}
+  - component: {fileID: 81594220906641864}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -91,6 +92,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.46}
   m_EdgeRadius: 0
+--- !u!81 &81594220906641864
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541015630016568}
+  m_Enabled: 1
 --- !u!82 &82496449194351194
 AudioSource:
   m_ObjectHideFlags: 1
@@ -158,7 +166,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

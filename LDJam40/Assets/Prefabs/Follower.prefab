@@ -140,7 +140,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -158,7 +158,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -214,6 +214,7 @@ MonoBehaviour:
   isGrounded: 1
   deathPS: {fileID: 198998075210966200, guid: 0af65ff0a6e5246519ae8417f91a99b0, type: 2}
   jumpSound: {fileID: 8300000, guid: ce31aec20b3794ca3a9a072d1946f6c4, type: 3}
+  deathSound: {fileID: 8300000, guid: 8a64edd61b4a8457b831dc8aa0bbda31, type: 3}
 --- !u!212 &212030766894156246
 SpriteRenderer:
   m_ObjectHideFlags: 1
