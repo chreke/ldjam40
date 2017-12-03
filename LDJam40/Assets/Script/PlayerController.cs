@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	void Update() {
 		if(!GameManager.instance.levelComplete) {
 			Move();
+		} else {
+			player.ChangeDirection(0);
 		}
 	}
 
