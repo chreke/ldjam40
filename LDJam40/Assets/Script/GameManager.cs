@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 	public Text timer;
+	public Text teamSize;
 	private const float followerDelay = 0.15f;
 	public float timeLimit = 10.0f;
 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour {
 		if(!levelComplete) {
 			timeLimit -= Time.deltaTime;
 			timer.text = timeLimit.ToString("F2");
+			teamSize.text = "Teamsize: " + (followers.Count + 1);
 		}
 		if(timeLimit <= 0) {
 			timeLimit = 0;
