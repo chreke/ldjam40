@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 	public Text timer;
-	private const float followerDelay = 0.20f;
+	private const float followerDelay = 0.15f;
 	public float timeLimit = 60.0f;
 
 	public bool levelComplete = false;

@@ -33,13 +33,17 @@ public class Character : MonoBehaviour {
 	BoxCollider2D bc;
 
     Animator am;
+	AudioSource asource;
+	public AudioClip jumpSound;
+	public AudioClip deathSound;
 	List<CharacterListener> listeners = new List<CharacterListener>();
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		bc = GetComponent<BoxCollider2D>();
-        am = GetComponent<Animator>();
+		am = GetComponent<Animator>();
+		asource = GetComponent<AudioSource>();
 		defaultXScale = transform.localScale.x;
 	}
 
@@ -98,15 +102,23 @@ public class Character : MonoBehaviour {
 			rb.AddForce(Vector2.up * jumpForce);
 			jumpForce = defaultJumpForce;
             am.SetTrigger("Jump");
+			asource.pitch = Random.Range(0.9f,1.1f);
+			asource.PlayOneShot(jumpSound);
 		}
 	}
 
 	public void Kill() {
 		Debug.Log("Got killed!");
 		isAlive = false;
-		bc.gameObject.SetActive(false);
+
+		// Disable collider and sprite renderer. Probably better to do this another way...
+		bc.enabled = false;
+		GetComponent<SpriteRenderer>().enabled = false;
+
 		ParticleSystem initPS = Instantiate(deathPS, transform.position, Quaternion.identity);
 		Destroy(initPS.gameObject, initPS.main.duration);
+		asource.pitch = Random.Range(0.9f,1.1f);
+		asource.PlayOneShot(deathSound);
 		foreach (CharacterListener l in listeners) {
 			l.onKill(this);
 		}
