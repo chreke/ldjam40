@@ -110,6 +110,9 @@ public class Character : MonoBehaviour {
 		foreach (CharacterListener l in listeners) {
 			l.onKill(this);
 		}
+		if(GetComponent<PlayerController>()) {
+			GameManager.instance.gameOver = true;	
+		}
 	}
 
 	public bool IsAlive {

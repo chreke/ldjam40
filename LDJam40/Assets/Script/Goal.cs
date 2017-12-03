@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Goal : MonoBehaviour {
 
 	bool hasWon = false;
+	public int goalScore = 2000;
 	public float timeBeforeScoreLoad = 2f;
 
 	// Use this for initialization
@@ -21,7 +22,9 @@ public class Goal : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if(!hasWon) {
 			if(other.gameObject.GetComponent<PlayerController>()) {
+				ScoreManager.instance.treasure = 2000;
 				hasWon = true;
+				GameManager.instance.levelComplete = true;
 				StartCoroutine(Win(timeBeforeScoreLoad));
 			}
 		}
